@@ -1,0 +1,66 @@
+@extends('adminlte::page')
+
+@section('title', 'New Valas')
+@section('content_header')
+@section('plugins.TempusDominusBs4', true)
+<h1>Create a New Valas</h1>
+@stop
+
+@section('content')
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-body">
+          <form action="{{ route('valas.store') }}" method="post">
+            @csrf
+
+            <div class="row mb-3">
+              <label for="inputEmail3" class="col-sm-2 col-form-label">Nama Valas</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" name="nama_valas" id="nama_valas">
+              </div>
+            </div>
+            <div class="row mb-3">
+              <label for="inputEmail3" class="col-sm-2 col-form-label">Nilai Jual</label>
+              <div class="col-sm-10">
+                <input type="number" class="form-control" name="nilai_jual" id="nilai_jual">
+              </div>
+            </div>
+
+            <div class="row mb-3">
+              <label for="inputEmail3" class="col-sm-2 col-form-label">Nilai Beli</label>
+              <div class="col-sm-10">
+                <input type="number" class="form-control" name="nilai_beli" id="nilai_beli">
+              </div>
+            </div>
+
+            <div class="row mb-3">
+              <label for="inputEmail3" class="col-sm-2 col-form-label">Tanggal Rate</label>
+              @php
+              $config = ['format' => 'YYYY-MM-DD'];
+              @endphp
+              <x-adminlte-input-date name="tanggal_rate" :config="$config" placeholder="Choose a date..." id="tanggal_rate">
+                <x-slot name="appendSlot">
+                  <div class="input-group-text bg-gradient-danger">
+                    <i class="fas fa-calendar-alt"></i>
+                  </div>
+                </x-slot>
+              </x-adminlte-input-date>
+            </div>
+
+            <div class="col-md-12 text-right">
+              <button type="submit" class="btn btn-success">
+                <i class="fa fa-save"></i>
+                Save</button>
+
+            </div>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+@stop
